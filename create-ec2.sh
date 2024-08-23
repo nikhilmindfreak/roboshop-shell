@@ -32,7 +32,7 @@ for name in ${instances[@]}; do   #@ is all variables
     {
         "Comment": "Creating a record set for '$name'"
         ,"Changes": [{
-        "Action"              : "UPSERT"
+        "Action"              : "UPSERT"  
         ,"ResourceRecordSet"  : {
             "Name"              : "'$name.$domain_name'"
             ,"Type"             : "A"
