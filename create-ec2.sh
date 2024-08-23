@@ -4,8 +4,8 @@ instances=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipp
 domain_name="devopsme.online"
 hosted_zone_id="Z05782673IECJD1E1MAG1"
 
-for name in ${instances[@]}; do
-    if [ $name == "shipping" ] || [ $name == "mysql" ]
+for name in ${instances[@]}; do   #@ is all variables
+    if [ $name == "shipping" ] || [ $name == "mysql" ]  # || or condition, 
     then
         instance_type="t3.medium"
     else
