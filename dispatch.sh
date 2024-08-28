@@ -28,29 +28,32 @@ else
 fi
 
 
-dnf install golang -y
+dnf install golang -y &>> $LOGFILE
 
 
-useradd roboshop
+useradd roboshop &>> $LOGFILE
 
 
-mkdir /app 
+mkdir /app  &>> $LOGFILE
 
-curl -L -o /tmp/dispatch.zip https://roboshop-builds.s3.amazonaws.com/dispatch.zip
-cd /app 
-unzip /tmp/dispatch.zip
+curl -L -o /tmp/dispatch.zip https://roboshop-builds.s3.amazonaws.com/dispatch.zip &>> $LOGFILE
+cd /app  &>> $LOGFILE
+unzip /tmp/dispatch.zip &>> $LOGFILE
 
-cd /app 
-go mod init dispatch
-go get 
-go build
+cd /app  &>> $LOGFILE
+go mod init dispatch &>> $LOGFILE
+go get  &>> $LOGFILE
+go build &>> $LOGFILE
+
+cp /home/ec2-user/roboshop-shell/dispatch.service /etc/systemd/system/dispatch.service &>> $LOGFILE
+VALIDATE $? "Copying dispatch service"
 
 
 
-systemctl daemon-reload
+systemctl daemon-reload &>> $LOGFILE
 
 
-systemctl enable dispatch 
-systemctl start dispatch
+systemctl enable dispatch  &>> $LOGFILE
+systemctl start dispatch &>> $LOGFILE
 
 
