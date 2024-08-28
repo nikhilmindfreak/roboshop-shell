@@ -29,3 +29,13 @@ fi
 
 
 dnf install golang -y
+
+
+useradd roboshop
+
+
+mkdir /app 
+
+curl -L -o /tmp/dispatch.zip https://roboshop-builds.s3.amazonaws.com/dispatch.zip
+cd /app 
+unzip /tmp/dispatch.zip
